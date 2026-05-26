@@ -15,3 +15,4 @@ jobs:
       forceDeploy: true
       deploymentName: minecraft-server-manager-website
       imageName: minecraft-server-manager-website
+      monitorIds: '54'
