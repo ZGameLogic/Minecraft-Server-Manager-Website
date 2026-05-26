@@ -16,3 +16,4 @@ jobs:
       deploymentName: minecraft-server-manager-website
       imageName: minecraft-server-manager-website
       monitorIds: '54'
+      applicationId: '53'
