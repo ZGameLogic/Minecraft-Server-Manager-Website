@@ -13,9 +13,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: minecraft-server-manager-website
+                name: minecraft-server-manager-api
                 port:
-                  number: 8080
+                  number: 22335
           - path: /
             pathType: Prefix
             backend:
