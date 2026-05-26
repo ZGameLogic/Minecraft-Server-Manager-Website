@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server-manager-website
+  labels:
+    app: minecraft-server-manager-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-server-manager-website
+  template:
+    metadata:
+      name: minecraft-server-manager-website
+      labels:
+        app: minecraft-server-manager-website
+    spec:
+      containers:
+        - name: minecraft-server-manager-website
+          image: ghcr.io/zgamelogic/minecraft-server-manager-website:production
+          imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "America/Chicago"
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: ghcr-secret

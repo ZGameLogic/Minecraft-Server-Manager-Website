@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minecraft-server-manager-website
+  labels:
+    route53: msm
+spec:
+  rules:
+    - host: "msm.zgamelogic.com"
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: minecraft-server-manager-website
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minecraft-server-manager-website
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+        - "msm.zgamelogic.com"
+      secretName: ingress-tls

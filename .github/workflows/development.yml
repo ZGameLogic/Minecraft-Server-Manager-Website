@@ -1,0 +1,21 @@
+name: Minecraft Server Manager Deploy Development
+
+on:
+  pull_request:
+    types:
+      - synchronize
+      - opened
+      - reopened
+    branches:
+      - main
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      packages: write
+    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.1
+    with:
+      environment: development
+      deploymentName: minecraft-server-manager-website
+      imageName: minecraft-server-manager-website

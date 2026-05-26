@@ -1,0 +1,16 @@
+name: Minecraft Server Manager Deploy Production
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      packages: write
+    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.1
+    with:
+      environment: production
+      deploymentName: minecraft-server-manager-website
+      imageName: minecraft-server-manager-website
