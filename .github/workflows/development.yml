@@ -14,7 +14,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.1
+    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.2
     with:
       environment: development
       deploymentName: minecraft-server-manager-website
