@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes} from "react-router";
 import AppHeader from "./header/AppHeader.tsx";
 import Dashboard from "./dashboard/Dashboard.tsx";
 import Servers from "./servers/Servers.tsx";
+import {AuthDataProvider} from "./global/auth/AuthDataProvider.tsx";
 
 function App() {
   const theme = createTheme({
@@ -13,12 +14,14 @@ function App() {
 
   return <ThemeProvider theme={theme}>
     <BrowserRouter>
-      <CssBaseline />
-      <AppHeader />
-      <Routes>
-        <Route path={'/'} element={<Dashboard />} />
-        <Route path={'/servers'} element={<Servers />} />
-      </Routes>
+      <AuthDataProvider>
+        <CssBaseline />
+        <AppHeader />
+        <Routes>
+          <Route path={'/'} element={<Dashboard />} />
+          <Route path={'/servers'} element={<Servers />} />
+        </Routes>
+      </AuthDataProvider>
     </BrowserRouter>
   </ThemeProvider>;
 }
