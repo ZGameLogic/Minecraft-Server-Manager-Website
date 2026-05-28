@@ -1,5 +1,6 @@
 import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
 import {NavLink} from "react-router";
+import UserWidget from "./UserWidget.tsx";
 
 function AppHeader() {
   return <AppBar position={'static'} >
@@ -21,6 +22,7 @@ function AppHeader() {
         Servers
       </Button>
       <Box sx={{ flexGrow: 1 }} />
+      <UserWidget />
     </Toolbar>
   </AppBar>
 }
