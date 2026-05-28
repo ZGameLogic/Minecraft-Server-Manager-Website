@@ -9,11 +9,11 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.2
+    uses: zgamelogic/github-actions/.github/workflows/kubernetes-react-deploy.yaml@v1.0.3
     with:
       environment: production
       forceDeploy: true
       deploymentName: minecraft-server-manager-website
       imageName: minecraft-server-manager-website
       monitorIds: '54'
-      applicationId: '53'
+      applicationId: 53
