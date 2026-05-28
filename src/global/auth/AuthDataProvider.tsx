@@ -1,6 +1,5 @@
 import {type PropsWithChildren, useEffect, useState} from "react";
 import {AuthDataContext} from "./AuthDataContext.ts";
-import {useSearchParams} from "react-router";
 
 export type AuthData = {
   msmToken: string;
@@ -10,16 +9,20 @@ export type AuthData = {
 }
 
 export function AuthDataProvider({ children }: PropsWithChildren) {
-  const [searchParams, setSearchParams] = useSearchParams();
   const [authData, setAuthData] = useState<AuthData | undefined>(undefined);
 
   useEffect(() => {
-    console.log('Code: ', searchParams.get('code'));
-    setSearchParams({}, { replace: true });
-  }, [searchParams, setSearchParams]);
+    fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/token`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => res.json()).then(data => {
+      setAuthData(data);
+    });
+  }, []);
 
   return <AuthDataContext.Provider value={{
-    authData
+    authData,
+    setAuthData
   }}>
     {children}
   </AuthDataContext.Provider>

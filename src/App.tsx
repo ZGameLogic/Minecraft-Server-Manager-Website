@@ -4,6 +4,7 @@ import AppHeader from "./header/AppHeader.tsx";
 import Dashboard from "./dashboard/Dashboard.tsx";
 import Servers from "./servers/Servers.tsx";
 import {AuthDataProvider} from "./global/auth/AuthDataProvider.tsx";
+import LoginPage from "./login/LoginPage.tsx";
 
 function App() {
   const theme = createTheme({
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path={'/'} element={<Dashboard />} />
           <Route path={'/servers'} element={<Servers />} />
+          <Route path={'/login'} element={<LoginPage />} />
         </Routes>
       </AuthDataProvider>
     </BrowserRouter>
