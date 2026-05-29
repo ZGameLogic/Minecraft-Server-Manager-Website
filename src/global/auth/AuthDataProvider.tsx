@@ -2,7 +2,6 @@ import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
 import {AuthDataContext} from "./AuthDataContext.ts";
 
 export type AuthData = {
-  msmToken: string;
   discordId: string;
   discordUsername: string;
   discordAvatar: string;
