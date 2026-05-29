@@ -1,4 +1,4 @@
-import {type PropsWithChildren, useEffect, useState} from "react";
+import {type PropsWithChildren, useCallback, useEffect, useState} from "react";
 import {AuthDataContext} from "./AuthDataContext.ts";
 
 export type AuthData = {
@@ -29,12 +29,26 @@ export function AuthDataProvider({ children }: PropsWithChildren) {
       credentials: 'include'
     }).then(res => res.json()).then((data: AuthData) => {
       setAuthData(data);
+    }).catch(() => {});
+  }, []);
+
+  const logout = useCallback(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/logout`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => {
+      if(!res.ok) return;
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('user_name');
+      localStorage.removeItem('user_avatar');
+      setAuthData(undefined);
     });
   }, []);
 
   return <AuthDataContext.Provider value={{
     authData,
-    setAuthData
+    setAuthData,
+    logout
   }}>
     {children}
   </AuthDataContext.Provider>
