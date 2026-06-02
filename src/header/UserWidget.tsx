@@ -2,6 +2,7 @@ import {useAuthData} from "../global/auth/useAuthData.ts";
 import {Avatar, ButtonBase, ListItemIcon, Menu, MenuItem, Stack, Typography} from "@mui/material";
 import {useMemo, useState, type MouseEvent} from "react";
 import {Logout} from "@mui/icons-material";
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 function UserWidget() {
   const { authData, logout } = useAuthData();
@@ -30,6 +31,12 @@ function UserWidget() {
         anchorEl={anchorEl}
         onClose={handleClose}
       >
+        <MenuItem>
+          <ListItemIcon>
+            <OpenInNewIcon fontSize="small" />
+          </ListItemIcon>
+          Link Minecraft Account
+        </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
