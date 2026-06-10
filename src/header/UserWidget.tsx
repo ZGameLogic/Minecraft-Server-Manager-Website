@@ -31,7 +31,7 @@ function UserWidget() {
         anchorEl={anchorEl}
         onClose={handleClose}
       >
-        <MenuItem>
+        <MenuItem disabled={true}>
           <ListItemIcon>
             <OpenInNewIcon fontSize="small" />
           </ListItemIcon>
