@@ -1,7 +1,8 @@
 import type {ServerData} from "../global/server/ServerDataProvider.tsx";
-import {Card, CardContent, Divider, Stack, Typography} from "@mui/material";
+import {Box, Card, CardContent, Divider, IconButton, Stack, Typography} from "@mui/material";
 import MinecraftHead from "../components/MinecraftHead.tsx";
 import { RiProgress8Line } from "react-icons/ri";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 type ServerCardProps = {
   data: ServerData;
@@ -25,6 +26,26 @@ function ServerCard({data}: ServerCardProps){
         <Typography variant={'h4'} noWrap>{data.name}</Typography>
         <RiProgress8Line size={25} color={data.pingData ? 'green' : 'red'} style={{ flexShrink: 0 }}/>
       </Stack>
+      <Box
+        sx={{
+          alignItems:'center',
+          bgcolor: 'background.paper',
+          paddingInline: 1,
+          border: '1px solid',
+          borderRadius: 1.5,
+          borderColor: "divider",
+          display: 'flex',
+          justifyContent: 'space-between'
+        }}
+      >
+        <Typography variant="body2">{data.domain}</Typography>
+        <IconButton sx={{ marginLeft: 'auto' }} onClick={e => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(data.domain);
+        }}>
+          <ContentCopyIcon fontSize="small" />
+        </IconButton>
+      </Box>
       {data.pingData &&
         <>
           <Divider textAlign="left">
