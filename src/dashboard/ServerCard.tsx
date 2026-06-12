@@ -8,11 +8,22 @@ type ServerCardProps = {
 }
 
 function ServerCard({data}: ServerCardProps){
-  return <Card sx={{ maxWidth: 345 }}>
+  return <Card
+    onClick={() => console.log("Server card clicked:", data.name, data)}
+    sx={{
+      maxWidth: 345,
+      cursor: "pointer",
+      transition: "transform 0.2s ease, box-shadow 0.2s ease",
+      "&:hover": {
+        transform: "translateY(-4px)",
+        boxShadow: 6
+      },
+    }}
+  >
     <CardContent>
       <Stack direction={'row'} sx={{alignItems: 'center'}} spacing={1} >
-        <Typography variant={'h4'}>{data.name}</Typography>
-        <RiProgress8Line size={25} color={data.pingData ? 'green' : 'red'} />
+        <Typography variant={'h4'} noWrap>{data.name}</Typography>
+        <RiProgress8Line size={25} color={data.pingData ? 'green' : 'red'} style={{ flexShrink: 0 }}/>
       </Stack>
       {data.pingData &&
         <>
